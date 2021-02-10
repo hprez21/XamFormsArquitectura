@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamFormsArquitectura.Views.DetailsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:XamFormsArquitectura.ViewModels;assembly=XamFormsArquitectura"
+    viewModels:ViewModelLocator.AutoWireViewModel="True">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".4*" />
+                <RowDefinition Height=".6*" />
+            </Grid.RowDefinitions>
+            <Image Aspect="AspectFill" Source="{Binding Anime.image_url}" />
+            <StackLayout Grid.Row="1" Margin="15">
+                <Label
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding Anime.title}" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Synopsis" />
+                <Label Text="{Binding Anime.synopsis}" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Episodes" />
+                <Label Text="{Binding Anime.episodes}" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Type" />
+                <Label Text="{Binding Anime.type}" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Score" />
+                <Label Text="{Binding Anime.score}" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Rated" />
+                <Label Text="{Binding Anime.rated}" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+
+
+</ContentPage>

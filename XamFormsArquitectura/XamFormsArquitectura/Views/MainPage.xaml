@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamFormsArquitectura.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:XamFormsArquitectura.ViewModels;assembly=XamFormsArquitectura"
+    viewModels:ViewModelLocator.AutoWireViewModel="True"
+    BackgroundColor="#111A29">
+
+    <StackLayout>
+        <Frame
+            Padding="24"
+            BackgroundColor="#111A29"
+            CornerRadius="0">
+            <Label
+                FontSize="36"
+                HorizontalTextAlignment="Center"
+                Text="Bienvenido a XamAnime"
+                TextColor="White" />
+        </Frame>
+        <SearchBar
+            x:Name="searcher"
+            CancelButtonColor="White"
+            Placeholder="Busca tu Anime Favorito"
+            PlaceholderColor="White"
+            SearchCommand="{Binding QueryCommand}"
+            SearchCommandParameter="{Binding Source={x:Reference searcher}, Path=Text}"
+            TextColor="White" />
+        <CollectionView
+            Margin="15,0"
+            ItemsSource="{Binding AnimeList}"
+            SelectedItem="{Binding SelectedAnime}"
+            SelectionChangedCommand="{Binding ItemTappedCommand}"
+            SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="15" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        Padding="0"
+                        BackgroundColor="#172333"
+                        CornerRadius="15"
+                        HeightRequest="150">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".3*" />
+                                <ColumnDefinition Width=".7*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height=".6*" />
+                                <RowDefinition Height=".4*" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Column="1"
+                                Margin="10"
+                                FontSize="Large"
+                                Text="{Binding title}"
+                                TextColor="White" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Margin="10"
+                                FontSize="Medium"
+                                Text="{Binding score, StringFormat='Puntuación: {0}'}"
+                                TextColor="White" />
+                            <Image
+                                Grid.RowSpan="2"
+                                Aspect="AspectFill"
+                                Source="{Binding image_url}" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
+
+</ContentPage>
